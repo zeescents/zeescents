@@ -564,6 +564,138 @@
             transition: var(--transition-smooth);
         }
 
+        /* --- CHECKOUT & PAYMENT PAGE STYLES --- */
+        .checkout-section {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 24px;
+            display: none;
+        }
+        
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .checkout-card {
+            background-color: var(--bg-offwhite);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+        
+        .checkout-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e5e5e5;
+            padding-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .payment-methods-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .payment-method-option {
+            border: 2px solid #e5e5e5;
+            border-radius: 6px;
+            padding: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            background: #fff;
+        }
+        
+        .payment-method-option input {
+            cursor: pointer;
+        }
+        
+        .payment-method-option.selected {
+            border-color: var(--accent-gold);
+            background-color: #faf8f5;
+        }
+        
+        .payment-method-label {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .checkout-summary-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            color: var(--text-muted);
+        }
+        
+        .checkout-summary-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-top: 1px dashed #cccccc;
+            margin-top: 15px;
+            padding-top: 15px;
+            color: var(--text-dark);
+        }
+        
+        .btn-pay {
+            width: 100%;
+            background-color: var(--accent-gold);
+            color: white;
+            border: none;
+            padding: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: var(--transition-smooth);
+        }
+        
+        .btn-pay:hover {
+            background-color: var(--text-dark);
+        }
+        
+        /* Success Screen */
+        .success-view {
+            text-align: center;
+            padding: 40px 10px;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: #25d366;
+            margin-bottom: 20px;
+        }
+
         /* --- PREMIUM LUXURY FOOTER --- */
         .premium-footer {
             background-color: var(--bg-dark-footer);
@@ -725,10 +857,10 @@
                 <a href="#" id="brand-logo">ZeeScents</a>
             </div>
             <nav class="nav-menu">
-                <span class="nav-item active" data-target="all">Home</span>
-                <span class="nav-item" data-target="men">Men</span>
-                <span class="nav-item" data-target="women">Women</span>
-                <span class="nav-item" data-target="bestsellers">Best Sellers</span>
+                <span class="nav-menu-item nav-item active" data-target="all">Home</span>
+                <span class="nav-menu-item nav-item" data-target="men">Men</span>
+                <span class="nav-menu-item nav-item" data-target="women">Women</span>
+                <span class="nav-menu-item nav-item" data-target="bestsellers">Best Sellers</span>
             </nav>
             <div class="header-actions">
                 <div class="action-btn" id="search-trigger">Search</div>
@@ -758,6 +890,86 @@
         </form>
     </section>
 
+    <section class="section-container checkout-section" id="checkout-view">
+        <div class="section-title">
+            <h2>Secure Checkout</h2>
+            <p>Complete your luxury fragrance experience</p>
+        </div>
+        
+        <div id="checkout-form-wrapper">
+            <form id="payment-form" onsubmit="handlePaymentSubmit(event)">
+                <div class="checkout-grid">
+                    <div class="checkout-card">
+                        <h3>Shipping & Info</h3>
+                        <div class="form-group">
+                            <label for="cust-name">Full Name</label>
+                            <input type="text" id="cust-name" class="account-input" placeholder="e.g. Muhammad Ali" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cust-phone">Phone Number</label>
+                            <input type="tel" id="cust-phone" class="account-input" placeholder="e.g. 03001234567" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cust-address">Delivery Address</label>
+                            <input type="text" id="cust-address" class="account-input" placeholder="Complete Street Address & City" required>
+                        </div>
+                    </div>
+                    
+                    <div class="checkout-card">
+                        <h3>Payment Method</h3>
+                        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:10px;">Select your preferred payment gateway:</p>
+                        
+                        <div class="payment-methods-container">
+                            <div class="payment-method-option selected" onclick="selectPaymentMethod('jazzcash')">
+                                <input type="radio" id="pay-jc" name="pay-method" value="JazzCash" checked>
+                                <label class="payment-method-label" for="pay-jc">JazzCash Mobile Wallet</label>
+                            </div>
+                            <div class="payment-method-option" onclick="selectPaymentMethod('easypaisa')">
+                                <input type="radio" id="pay-ep" name="pay-method" value="EasyPaisa">
+                                <label class="payment-method-label" for="pay-ep">EasyPaisa Mobile Wallet</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group" style="margin-top:20px;">
+                            <label id="wallet-input-label">Your JazzCash Mobile Account Number</label>
+                            <input type="tel" id="wallet-account" class="account-input" placeholder="03XXXXXXXXX" required>
+                        </div>
+                        
+                        <div style="margin-top:25px;">
+                            <div class="checkout-summary-item">
+                                <span>Cart Subtotal:</span>
+                                <span id="summary-subtotal">Rs. 0</span>
+                            </div>
+                            <div class="checkout-summary-item">
+                                <span>Shipping Fees:</span>
+                                <span id="summary-shipping">Rs. 0</span>
+                            </div>
+                            <div class="checkout-summary-total">
+                                <span>Grand Total:</span>
+                                <span id="summary-grandtotal">Rs. 0</span>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn-pay">Complete Payment</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div id="checkout-success-wrapper" class="checkout-card success-view" style="display:none;">
+            <div class="success-icon">&#10004;</div>
+            <h3>Payment Received Successfully</h3>
+            <p style="margin-bottom: 20px; color: var(--text-muted);">Your transaction code verification is complete and your order is confirmed.</p>
+            <div style="background:#fff; border:1px solid #e5e5e5; padding:20px; border-radius:6px; max-width:400px; margin:0 auto 25px auto; text-align:left;">
+                <p><strong>Tracking ID:</strong> <span id="receipt-id">ZS000000001</span></p>
+                <p><strong>Customer Name:</strong> <span id="receipt-name">---</span></p>
+                <p><strong>Amount Paid:</strong> <span id="receipt-total">Rs. 0</span></p>
+            </div>
+            <button class="btn-luxury" style="background:var(--text-dark); color:#fff;" onclick="downloadReceipt()">Download Invoice Receipt</button>
+            <button class="btn-luxury" style="margin-left:10px;" onclick="showCategory('all')">Continue Shopping</button>
+        </div>
+    </section>
+
     <main class="section-container" id="products-view">
         <div class="section-title">
             <h2 id="catalog-title">Best Sellers</h2>
@@ -767,7 +979,7 @@
         <div class="product-grid">
             <div class="product-card" data-title="SAVAGE">
                 <div class="image-wrapper">
-                    <span class="badge-sale">Available</span>
+                    <span class="badge-sale">Sale</span>
                     <img src="Savage.png" alt="Savage" class="product-image">
                 </div>
                 <span class="inspired-tag">Here what you need Best</span>
@@ -781,10 +993,10 @@
 
             <div class="product-card" data-title="ROYAL OUD">
                 <div class="image-wrapper">
-                    <span class="badge-sale">Available</span>
+                    <span class="badge-sale">Sale</span>
                     <img src="Royal Oud.png" alt="Royal Oud" class="product-image">
                 </div>
-                <span class="inspired-tag">A royal fragrance by ZeeScents</span>
+                <span class="inspired-tag">A royal fragrance by ZeeStyle</span>
                 <h3 class="product-title">Royal Oud</h3>
                 <div class="price-container">
                     <span class="sale-price">Rs. 1,899</span>
@@ -795,7 +1007,7 @@
 
             <div class="product-card" data-title="NOOR">
                 <div class="image-wrapper">
-                    <span class="badge-sale">Out of Stock</span>
+                    <span class="badge-sale">Sale</span>
                     <img src="Noor.png" alt="Noor" class="product-image">
                 </div>
                 <span class="inspired-tag">Inspired by Al-Zahra</span>
@@ -809,7 +1021,7 @@
 
             <div class="product-card" data-title="ZARAR">
                 <div class="image-wrapper">
-                    <span class="badge-sale">Available</span>
+                    <span class="badge-sale">Sale</span>
                     <img src="Zarar.png" alt="Zarar" class="product-image">
                 </div>
                 <span class="inspired-tag">Get some better touch</span>
@@ -823,7 +1035,7 @@
 
             <div class="product-card" data-title="JANNAT">
                 <div class="image-wrapper">
-                    <span class="badge-sale">Available</span>
+                    <span class="badge-sale">Sale</span>
                     <img src="Jannat.png" alt="Jannat" class="product-image">
                 </div>
                 <span class="inspired-tag">Jannat for her</span>
@@ -837,7 +1049,7 @@
 
             <div class="product-card" data-title="AMBER MUSK">
                 <div class="image-wrapper">
-                    <span class="badge-sale">Out of Stcok</span>
+                    <span class="badge-sale">Sale</span>
                     <img src="Amber Musk.png" alt="Amber Musk" class="product-image">
                 </div>
                 <span class="inspired-tag">Inspired by Musk-e-Amber</span>
@@ -851,7 +1063,7 @@
 
             <div class="product-card" data-title="BLACK OUD">
                 <div class="image-wrapper">
-                    <span class="badge-sale">Out of Stcok</span>
+                    <span class="badge-sale">Sale</span>
                     <img src="Black Oud.png" alt="Black Oud" class="product-image">
                 </div>
                 <span class="inspired-tag">Inspired by Royal Oud</span>
@@ -865,7 +1077,7 @@
 
             <div class="product-card" data-title="ROSE ELIXIR">
                 <div class="image-wrapper">
-                    <span class="badge-sale">Out of Stcok</span>
+                    <span class="badge-sale">Sale</span>
                     <img src="Rose.png" alt="rOSE" class="product-image">
                 </div>
                 <span class="inspired-tag">Luxury Scent</span>
@@ -893,7 +1105,7 @@
                 <span>Subtotal:</span>
                 <span id="cart-subtotal-val">Rs. 0</span>
             </div>
-            <button class="btn-checkout">Proceed To Checkout</button>
+            <button class="btn-checkout" onclick="openCheckoutView()">Proceed To Checkout</button>
         </div>
     </div>
 
@@ -950,6 +1162,7 @@
     <script>
         // Track cart items globally
         let cart = [];
+        let currentOrderData = null; // Cache for receipt assembly
 
         // DOM Element Cache
         const cartTrigger = document.getElementById('cart-trigger');
@@ -970,9 +1183,10 @@
         const heroBanner = document.getElementById('hero-banner');
         const productsView = document.getElementById('products-view');
         const accountView = document.getElementById('account-view');
+        const checkoutView = document.getElementById('checkout-view');
         const catalogTitle = document.getElementById('catalog-title');
         const catalogSubtitle = document.getElementById('catalog-subtitle');
-        const navItems = document.querySelectorAll('.nav-item');
+        const navItems = document.querySelectorAll('.nav-menu-item');
         const accountBtn = document.getElementById('account-trigger-btn');
         const brandLogo = document.getElementById('brand-logo');
         const exploreBtn = document.getElementById('explore-btn');
@@ -988,12 +1202,12 @@
         function showCategory(categoryKey) {
             // Reset visibility states
             accountView.style.display = 'none';
+            checkoutView.style.display = 'none';
             heroBanner.style.display = categoryKey === 'all' ? 'flex' : 'none';
             productsView.style.display = 'block';
 
             // Reset navigation highlights
             navItems.forEach(item => item.classList.remove('active'));
-
             const cards = document.querySelectorAll('.product-card');
 
             if (categoryKey === 'all') {
@@ -1033,6 +1247,7 @@
         function showAccountPage() {
             heroBanner.style.display = 'none';
             productsView.style.display = 'none';
+            checkoutView.style.display = 'none';
             accountView.style.display = 'block';
             navItems.forEach(item => item.classList.remove('active'));
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1045,7 +1260,6 @@
                 showCategory(target);
             });
         });
-
         accountBtn.addEventListener('click', showAccountPage);
         brandLogo.addEventListener('click', (e) => { e.preventDefault(); showCategory('all'); });
         exploreBtn.addEventListener('click', () => showCategory('all'));
@@ -1081,7 +1295,6 @@
             let subtotal = 0;
 
             cart.forEach((item, index) => {
-                // Parse clean numbers out of currency strings for standard adding logic
                 const explicitPrice = parseInt(item.price.replace(/[^0-9]/g, ''));
                 subtotal += explicitPrice;
                 
@@ -1097,7 +1310,6 @@
                 `;
                 cartItemsContainer.insertAdjacentHTML('beforeend', itemMarkup);
             });
-
             cartSubtotalVal.textContent = `Rs. ${subtotal.toLocaleString()}`;
         }
 
@@ -1122,6 +1334,149 @@
             cart.splice(index, 1);
             updateCartUI();
         };
+
+        /* --- CHECKOUT ENGINE LOGIC --- */
+        function openCheckoutView() {
+            if (cart.length === 0) {
+                alert("Your cart is empty. Please add items before checking out!");
+                return;
+            }
+            
+            // Close cart drawer layout
+            cartDrawer.classList.remove('active');
+            cartOverlay.classList.remove('active');
+            
+            // Toggle primary workspace visibility views
+            heroBanner.style.display = 'none';
+            productsView.style.display = 'none';
+            accountView.style.display = 'none';
+            checkoutView.style.display = 'block';
+            navItems.forEach(item => item.classList.remove('active'));
+            
+            // Reset forms state
+            document.getElementById('checkout-form-wrapper').style.display = 'block';
+            document.getElementById('checkout-success-wrapper').style.display = 'none';
+            document.getElementById('payment-form').reset();
+            selectPaymentMethod('jazzcash');
+            
+            // Calculate math parameters
+            let subtotal = 0;
+            cart.forEach(item => {
+                subtotal += parseInt(item.price.replace(/[^0-9]/g, ''));
+            });
+            
+            let shipping = subtotal >= 5000 ? 0 : 250;
+            let grandTotal = subtotal + shipping;
+            
+            // Inject summary metrics values 
+            document.getElementById('summary-subtotal').textContent = `Rs. ${subtotal.toLocaleString()}`;
+            document.getElementById('summary-shipping').textContent = shipping === 0 ? "FREE" : `Rs. ${shipping}`;
+            document.getElementById('summary-grandtotal').textContent = `Rs. ${grandTotal.toLocaleString()}`;
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function selectPaymentMethod(method) {
+            const options = document.querySelectorAll('.payment-method-option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            const label = document.getElementById('wallet-input-label');
+            const radioJc = document.getElementById('pay-jc');
+            const radioEp = document.getElementById('pay-ep');
+            
+            if (method === 'jazzcash') {
+                options[0].classList.add('selected');
+                radioJc.checked = true;
+                label.textContent = "Your JazzCash Mobile Account Number";
+            } else {
+                options[1].classList.add('selected');
+                radioEp.checked = true;
+                label.textContent = "Your EasyPaisa Mobile Account Number";
+            }
+        }
+        
+        function handlePaymentSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('cust-name').value;
+            const phone = document.getElementById('cust-phone').value;
+            const address = document.getElementById('cust-address').value;
+            const method = document.querySelector('input[name="pay-method"]:checked').value;
+            const walletNum = document.getElementById('wallet-account').value;
+            
+            // Generate a secure, beautiful 9-character Tracking ID string format (ZS + 7 digits)
+            const randomDigits = Math.floor(1000000 + Math.random() * 9000000); 
+            const generatedOrderId = `ZS${randomDigits}`;
+            
+            // Formulate current sum total value
+            const finalAmount = document.getElementById('summary-grandtotal').textContent;
+            
+            // Cache current state object dynamically for receipt building exports
+            currentOrderData = {
+                orderId: generatedOrderId,
+                name: name,
+                phone: phone,
+                address: address,
+                paymentMethod: method,
+                walletNumber: walletNum,
+                amount: finalAmount,
+                items: [...cart],
+                date: new Date().toLocaleString()
+            };
+            
+            // UI display mutations
+            document.getElementById('receipt-id').textContent = generatedOrderId;
+            document.getElementById('receipt-name').textContent = name;
+            document.getElementById('receipt-total').textContent = finalAmount;
+            
+            document.getElementById('checkout-form-wrapper').style.display = 'none';
+            document.getElementById('checkout-success-wrapper').style.display = 'block';
+            
+            // Clear checkout context arrays global store
+            cart = [];
+            updateCartUI();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function downloadReceipt() {
+            if (!currentOrderData) return;
+            
+            let itemsText = "";
+            currentOrderData.items.forEach((item, index) => {
+                itemsText += `${index + 1}. ${item.title} - ${item.price}\n`;
+            });
+            
+            const fileLayoutStr = `=========================================
+ZEESCENTS PAKISTAN - OFFICIAL INVOICE
+=========================================
+Order Tracking ID : ${currentOrderData.orderId}
+Date              : ${currentOrderData.date}
+Payment Gateway   : ${currentOrderData.paymentMethod} Secure Protocol
+-----------------------------------------
+CUSTOMER DETAILS:
+Name    : ${currentOrderData.name}
+Phone   : ${currentOrderData.phone}
+Address : ${currentOrderData.address}
+-----------------------------------------
+ORDERED ITEMS:
+${itemsText}
+-----------------------------------------
+TOTAL PAID: ${currentOrderData.amount}
+=========================================
+Thank you for shopping with ZeeScents!
+For support, WhatsApp us at 0312 6955737.
+=========================================`;
+
+            // Process explicit dynamic browser file delivery creation download mechanism
+            const textBlob = new Blob([fileLayoutStr], { type: 'text/plain' });
+            const linkTag = document.createElement('a');
+            linkTag.download = `ZeeScents_Invoice_${currentOrderData.orderId}.txt`;
+            linkTag.href = window.URL.createObjectURL(textBlob);
+            linkTag.style.display = 'none';
+            document.body.appendChild(linkTag);
+            linkTag.click();
+            document.body.removeChild(linkTag);
+        }
     </script>
 </body>
 </html>
