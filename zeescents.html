@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeeStyle | Premium Inspired Fragrances</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- DESIGN SYSTEM & VARIABLES --- */
+        :root {
+            --bg-pure: #ffffff;
+            --bg-offwhite: #f9f9f9;
+            --bg-dark-footer: #151515;
+            --text-dark: #111111;
+            --text-muted: #666666;
+            --text-light-muted: #999999;
+            --accent-gold: #b39250;
+            --accent-red: #d93838;
+            --font-display: 'Cinzel', serif;
+            --font-sans: 'Inter', sans-serif;
+            --transition-smooth: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* --- GLOBAL RESETS --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-pure);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-smooth);
+        }
+
+        /* --- ANNOUNCEMENT BANNER --- */
+        .promo-banner {
+            background-color: var(--text-dark);
+            color: #ffffff;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            padding: 10px 20px;
+            font-weight: 400;
+        }
+
+        /* --- HEADER NAVIGATION --- */
+        .main-header {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid #eeeeee;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 24px;
+        }
+
+        .logo a {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--text-dark);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-item {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            color: var(--accent-gold);
+        }
+
+        /* HEADER ACTIONS & DROPDOWNS */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .action-btn {
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .action-btn:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Cart Badge */
+        .cart-icon-wrapper {
+            position: relative;
+        }
+
+        .cart-count {
+            background-color: var(--text-dark);
+            color: #ffffff;
+            font-size: 0.7rem;
+            border-radius: 50%;
+            padding: 2px 7px;
+            position: absolute;
+            top: -10px;
+            right: -16px;
+            font-weight: 600;
+        }
+
+        /* --- SLIDE DOWN SEARCH BAR OVERLAY --- */
+        .search-overlay {
+            position: fixed;
+            top: -120px;
+            left: 0;
+            width: 100%;
+            height: 90px;
+            background-color: var(--bg-pure);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            z-index: 120;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 24px;
+        }
+
+        .search-overlay.active {
+            top: 0;
+        }
+
+        .search-form-container {
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 50px 12px 16px;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: var(--text-dark);
+        }
+
+        .close-search {
+            position: absolute;
+            right: 16px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://cdn.corenexis.com/f/bjNYTE6hqUQ.png') center/cover no-repeat;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            letter-spacing: 6px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 32px;
+            font-weight: 300;
+        }
+
+        .btn-luxury {
+            display: inline-block;
+            background-color: #ffffff;
+            color: var(--text-dark);
+            padding: 14px 36px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            border: 1px solid #ffffff;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .btn-luxury:hover {
+            background-color: transparent;
+            color: #ffffff;
+        }
+
+        /* --- PRODUCT SHOWCASE SECTION --- */
+        .section-container {
+            max-width: 1300px;
+            margin: 80px auto;
+            padding: 0 24px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-title h2 {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            letter-spacing: 4px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- PRODUCT GRID --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 40px 24px;
+        }
+
+        .product-card {
+            background: var(--bg-pure);
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        /* Used to filter products seamlessly via script */
+        .product-card.hidden {
+            display: none !important;
+        }
+
+        .image-wrapper {
+            background-color: var(--bg-offwhite);
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1 / 1.2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image {
+            width: 80%;
+            height: auto;
+            object-fit: contain;
+            transition: var(--transition-smooth);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .badge-sale {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--accent-red);
+            color: #ffffff;
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .inspired-tag {
+            color: var(--accent-gold);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            margin-top: 16px;
+            display: block;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 6px 0 8px 0;
+            letter-spacing: 0.5px;
+        }
+
+        .price-container {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+
+        .sale-price {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .regular-price {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .btn-add-cart {
+            width: 100%;
+            background-color: var(--text-dark);
+            color: #ffffff;
+            border: 1px solid var(--text-dark);
+            padding: 12px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-add-cart:hover {
+            background-color: var(--bg-pure);
+            color: var(--text-dark);
+        }
+
+        /* --- ACCOUNT SECTION --- */
+        .account-section {
+            max-width: 500px;
+            margin: 100px auto;
+            padding: 40px 24px;
+            background-color: var(--bg-offwhite);
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            display: none;
+        }
+
+        .account-section h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        .account-section p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+        }
+
+        .account-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .account-input {
+            width: 100%;
+            padding: 14px;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .account-input:focus {
+            border-color: var(--text-dark);
+        }
+
+        .btn-account-submit {
+            background-color: var(--text-dark);
+            color: #ffffff;
+            border: 1px solid var(--text-dark);
+            padding: 14px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-account-submit:hover {
+            background-color: transparent;
+            color: var(--text-dark);
+        }
+
+        /* --- SHOPPING CART DRAWER PANEL --- */
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background-color: var(--bg-pure);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.05);
+            z-index: 200;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-drawer.active {
+            right: 0;
+        }
+
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 150;
+            display: none;
+        }
+
+        .cart-overlay.active {
+            display: block;
+        }
+
+        .cart-header {
+            padding: 24px;
+            border-bottom: 1px solid #eeeeee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+        }
+
+        .btn-close-cart {
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .cart-items-body {
+            padding: 24px;
+            flex-grow: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .empty-cart-text {
+            text-align: center;
+            color: var(--text-muted);
+            margin-top: 40px;
+            font-size: 0.95rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            border-bottom: 1px solid #f5f5f5;
+            padding-bottom: 16px;
+        }
+
+        .cart-item-img {
+            width: 70px;
+            height: 80px;
+            background-color: var(--bg-offwhite);
+            object-fit: contain;
+        }
+
+        .cart-item-info {
+            flex-grow: 1;
+        }
+
+        .cart-item-title {
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .cart-item-price {
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .cart-footer {
+            padding: 24px;
+            border-top: 1px solid #eeeeee;
+            background-color: var(--bg-offwhite);
+        }
+
+        .cart-total-wrapper {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .btn-checkout {
+            width: 100%;
+            background-color: var(--text-dark);
+            color: #ffffff;
+            padding: 14px;
+            text-align: center;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        /* --- PREMIUM LUXURY FOOTER --- */
+        .premium-footer {
+            background-color: var(--bg-dark-footer);
+            color: #ffffff;
+            padding: 70px 24px 30px 24px;
+            font-family: var(--font-sans);
+        }
+
+        .footer-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr 0.8fr 1.2fr;
+            gap: 40px;
+            border-bottom: 1px solid #292929;
+            padding-bottom: 50px;
+        }
+
+        .footer-brand h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            color: var(--text-light-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-column h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-light-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+            padding-left: 4px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            color: var(--text-light-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .contact-info strong {
+            color: #ffffff;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .footer-bottom {
+            max-width: 1300px;
+            margin: 30px auto 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-socials a {
+            color: var(--text-light-muted);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            z-index: 999;
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+            background-color: #20ba5a;
+        }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 900px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="promo-banner">
+        Free Delivery Nationwide on Orders Above Rs. 5,000
+    </div>
+
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-form-container">
+            <input type="text" class="search-input" placeholder="Search fragrances (e.g. Exotic, Bleu, Creed)...">
+            <button class="close-search" id="search-close">&times;</button>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="#" id="brand-logo">ZeeScents</a>
+            </div>
+            <nav class="nav-menu">
+                <span class="nav-item active" data-target="all">Home</span>
+                <span class="nav-item" data-target="men">Men</span>
+                <span class="nav-item" data-target="women">Women</span>
+                <span class="nav-item" data-target="bestsellers">Best Sellers</span>
+            </nav>
+            <div class="header-actions">
+                <div class="action-btn" id="search-trigger">Search</div>
+                <div class="action-btn" id="account-trigger-btn">Account</div>
+                <div class="action-btn cart-icon-wrapper" id="cart-trigger">
+                    Cart
+                    <span class="cart-count" id="cart-counter">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="hero-banner">
+        <div class="hero-content">
+            <h1>Art of Luxury Scents</h1>
+            <p>Premium High-Concentration Expressions</p>
+            <button class="btn-luxury" id="explore-btn">Explore Collection</button>
+        </div>
+    </section>
+
+    <section class="account-section" id="account-view">
+        <h2>Join Exclusive Club</h2>
+        <p>Put your email address below to get exclusive news and deals sent over email.</p>
+        <form class="account-form" onsubmit="alert('Thank you! You have been subscribed successfully.'); this.reset(); return false;">
+            <input type="email" class="account-input" placeholder="Your Email Address" required>
+            <button type="submit" class="btn-account-submit">Submit</button>
+        </form>
+    </section>
+
+    <main class="section-container" id="products-view">
+        <div class="section-title">
+            <h2 id="catalog-title">Best Sellers</h2>
+            <p id="catalog-subtitle">Luxury inspirations optimized for long-lasting performance</p>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card" data-title="SAVAGE">
+                <div class="image-wrapper">
+                    <span class="badge-sale">Sale</span>
+                    <img src="Savage.png" alt="Savage" class="product-image">
+                </div>
+                <span class="inspired-tag">Here what you need Best</span>
+                <h3 class="product-title">Savage</h3>
+                <div class="price-container">
+                    <span class="sale-price">Rs. 1,799</span>
+                    <span class="regular-price">Rs. 2,499</span>
+                </div>
+                <button class="btn-add-cart">Add To Cart</button>
+            </div>
+
+            <div class="product-card" data-title="ROYAL OUD">
+                <div class="image-wrapper">
+                    <span class="badge-sale">Sale</span>
+                    <img src="Royal Oud.png" alt="Royal Oud" class="product-image">
+                </div>
+                <span class="inspired-tag">A royal fragrance by ZeeStyle</span>
+                <h3 class="product-title">Royal Oud</h3>
+                <div class="price-container">
+                    <span class="sale-price">Rs. 1,899</span>
+                    <span class="regular-price">Rs. 2,600</span>
+                </div>
+                <button class="btn-add-cart">Add To Cart</button>
+            </div>
+
+            <div class="product-card" data-title="NOOR">
+                <div class="image-wrapper">
+                    <span class="badge-sale">Sale</span>
+                    <img src="Noor.png" alt="Noor" class="product-image">
+                </div>
+                <span class="inspired-tag">Inspired by Al-Zahra</span>
+                <h3 class="product-title">Noor</h3>
+                <div class="price-container">
+                    <span class="sale-price">Rs. 1,799</span>
+                    <span class="regular-price">Rs. 2,499</span>
+                </div>
+                <button class="btn-add-cart">Add To Cart</button>
+            </div>
+
+            <div class="product-card" data-title="ZARAR">
+                <div class="image-wrapper">
+                    <span class="badge-sale">Sale</span>
+                    <img src="Zarar.png" alt="Zarar" class="product-image">
+                </div>
+                <span class="inspired-tag">Get some better touch</span>
+                <h3 class="product-title">ZARAR</h3>
+                <div class="price-container">
+                    <span class="sale-price">Rs. 1,799</span>
+                    <span class="regular-price">Rs. 2,499</span>
+                </div>
+                <button class="btn-add-cart">Add To Cart</button>
+            </div>
+
+            <div class="product-card" data-title="JANNAT">
+                <div class="image-wrapper">
+                    <span class="badge-sale">Sale</span>
+                    <img src="Jannat.png" alt="Jannat" class="product-image">
+                </div>
+                <span class="inspired-tag">Jannat for her</span>
+                <h3 class="product-title">Jannat</h3>
+                <div class="price-container">
+                    <span class="sale-price">Rs. 1,799</span>
+                    <span class="regular-price">Rs. 2,499</span>
+                </div>
+                <button class="btn-add-cart">Add To Cart</button>
+            </div>
+
+            <div class="product-card" data-title="AMBER MUSK">
+                <div class="image-wrapper">
+                    <span class="badge-sale">Sale</span>
+                    <img src="Amber Musk.png" alt="Amber Musk" class="product-image">
+                </div>
+                <span class="inspired-tag">Inspired by Musk-e-Amber</span>
+                <h3 class="product-title">Amber Musk</h3>
+                <div class="price-container">
+                    <span class="sale-price">Rs. 1,799</span>
+                    <span class="regular-price">Rs. 2,499</span>
+                </div>
+                <button class="btn-add-cart">Add To Cart</button>
+            </div>
+
+            <div class="product-card" data-title="BLACK OUD">
+                <div class="image-wrapper">
+                    <span class="badge-sale">Sale</span>
+                    <img src="Black Oud.png" alt="Black Oud" class="product-image">
+                </div>
+                <span class="inspired-tag">Inspired by Royal Oud</span>
+                <h3 class="product-title">Black Oud</h3>
+                <div class="price-container">
+                    <span class="sale-price">Rs. 1,799</span>
+                    <span class="regular-price">Rs. 2,499</span>
+                </div>
+                <button class="btn-add-cart">Add To Cart</button>
+            </div>
+
+            <div class="product-card" data-title="ROSE ELIXIR">
+                <div class="image-wrapper">
+                    <span class="badge-sale">Sale</span>
+                    <img src="Rose.png" alt="rOSE" class="product-image">
+                </div>
+                <span class="inspired-tag">Luxury Scent</span>
+                <h3 class="product-title">ROSE ELIXIR</h3>
+                <div class="price-container">
+                    <span class="sale-price">Rs. 1,899</span>
+                    <span class="regular-price">Rs. 2,499</span>
+                </div>
+                <button class="btn-add-cart">Add To Cart</button>
+            </div>
+        </div>
+    </main>
+
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="btn-close-cart" id="cart-close">&times;</button>
+        </div>
+        <div class="cart-items-body" id="cart-items-container">
+            <p class="empty-cart-text">Your shopping cart is currently empty.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total-wrapper">
+                <span>Subtotal:</span>
+                <span id="cart-subtotal-val">Rs. 0</span>
+            </div>
+            <button class="btn-checkout">Proceed To Checkout</button>
+        </div>
+    </div>
+
+    <footer class="premium-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>ZeeScents</h3>
+                <p>Crafting high-end, deeply persistent fragrance expressions inspired by globally legendary houses. We deliver luxury directly to your doorstep across Pakistan.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Support</h4>
+                <div class="footer-links">
+                    <a href="#">Contact Us</a>
+                    <a href="#">Exchange Policy</a>
+                    <a href="#">Refund Policy</a>
+                    <a href="#">Track Order</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="#">Terms of Service</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Search</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Get In Touch</h4>
+                <div class="contact-info">
+                    <p><strong>Customer Support</strong>Mon – Fri: 10 AM – 10 PM <br> Sat/Sun: Closed</p>
+                    <p><strong>Contact Info</strong>WhatsApp: 0312 6955737<br>Email: info@zeescents.com</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-copyright">
+                &copy; 2026 ZeeScents Pakistan. All Rights Reserved.
+            </div>
+            <div class="footer-socials">
+                <a href="#">Instagram</a>
+                <a href="#">Snapchat</a>
+                <a href="#">TikTok</a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/923126955737" class="whatsapp-float" target="_blank">WA</a>
+
+    <script>
+        // Track cart items globally
+        let cart = [];
+
+        // DOM Element Cache
+        const cartTrigger = document.getElementById('cart-trigger');
+        const cartClose = document.getElementById('cart-close');
+        const cartDrawer = document.getElementById('cart-drawer');
+        const cartOverlay = document.getElementById('cart-overlay');
+        const cartCounter = document.getElementById('cart-counter');
+        const cartItemsContainer = document.getElementById('cart-items-container');
+        const cartSubtotalVal = document.getElementById('cart-subtotal-val');
+        const addToCartButtons = document.querySelectorAll('.btn-add-cart');
+        
+        // Search Bars Elements
+        const searchTrigger = document.getElementById('search-trigger');
+        const searchClose = document.getElementById('search-close');
+        const searchOverlay = document.getElementById('search-overlay');
+
+        // Target Views for Filtering
+        const heroBanner = document.getElementById('hero-banner');
+        const productsView = document.getElementById('products-view');
+        const accountView = document.getElementById('account-view');
+        const catalogTitle = document.getElementById('catalog-title');
+        const catalogSubtitle = document.getElementById('catalog-subtitle');
+        const navItems = document.querySelectorAll('.nav-item');
+        const accountBtn = document.getElementById('account-trigger-btn');
+        const brandLogo = document.getElementById('brand-logo');
+        const exploreBtn = document.getElementById('explore-btn');
+
+        // Lists defined exactly as requested
+        const categories = {
+            men: ["ZARAR", "BLACK OUD", "ROYAL OUD", "SAVAGE", "AMBER MUSK"],
+            women: ["NOOR", "JANNAT", "ROSE ELIXIR", "AMBER MUSK", "ROYAL OUD"],
+            bestsellers: ["JANNAT", "AMBER MUSK", "ZARAR", "ROYAL OUD"]
+        };
+
+        // Navigation Engine
+        function showCategory(categoryKey) {
+            // Reset visibility states
+            accountView.style.display = 'none';
+            heroBanner.style.display = categoryKey === 'all' ? 'flex' : 'none';
+            productsView.style.display = 'block';
+
+            // Reset navigation highlights
+            navItems.forEach(item => item.classList.remove('active'));
+
+            const cards = document.querySelectorAll('.product-card');
+
+            if (categoryKey === 'all') {
+                catalogTitle.textContent = "Best Sellers";
+                catalogSubtitle.textContent = "Luxury inspirations optimized for long-lasting performance";
+                cards.forEach(card => card.classList.remove('hidden'));
+                document.querySelector('[data-target="all"]').classList.add('active');
+            } else {
+                // Update text display dynamically based on selection
+                if (categoryKey === 'men') {
+                    catalogTitle.textContent = "Men's Collection";
+                    catalogSubtitle.textContent = "Bold, woody, and refreshing notes crafted for men";
+                } else if (categoryKey === 'women') {
+                    catalogTitle.textContent = "Women's Collection";
+                    catalogSubtitle.textContent = "Elegant, floral, and mesmerizing expressions for her";
+                } else if (categoryKey === 'bestsellers') {
+                    catalogTitle.textContent = "Top Trending Best Sellers";
+                    catalogSubtitle.textContent = "Our most loved premium inspirations";
+                }
+
+                document.querySelector(`[data-target="${categoryKey}"]`).classList.add('active');
+                
+                // Filter individual cards via dataset titles matching our rule arrays
+                cards.forEach(card => {
+                    const title = card.getAttribute('data-title');
+                    if (categories[categoryKey].includes(title)) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Account View Toggle Engine
+        function showAccountPage() {
+            heroBanner.style.display = 'none';
+            productsView.style.display = 'none';
+            accountView.style.display = 'block';
+            navItems.forEach(item => item.classList.remove('active'));
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Assign Event Hooks
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const target = item.getAttribute('data-target');
+                showCategory(target);
+            });
+        });
+
+        accountBtn.addEventListener('click', showAccountPage);
+        brandLogo.addEventListener('click', (e) => { e.preventDefault(); showCategory('all'); });
+        exploreBtn.addEventListener('click', () => showCategory('all'));
+
+        // Search Drawer Toggle
+        searchTrigger.addEventListener('click', () => {
+            searchOverlay.classList.add('active');
+        });
+        searchClose.addEventListener('click', () => {
+            searchOverlay.classList.remove('active');
+        });
+
+        // Cart Panel Toggles
+        function toggleCart() {
+            cartDrawer.classList.toggle('active');
+            cartOverlay.classList.toggle('active');
+        }
+
+        cartTrigger.addEventListener('click', toggleCart);
+        cartClose.addEventListener('click', toggleCart);
+        cartOverlay.addEventListener('click', toggleCart);
+
+        // Core Cart UI Rendering
+        function updateCartUI() {
+            cartCounter.textContent = cart.length;
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="empty-cart-text">Your shopping cart is currently empty.</p>';
+                cartSubtotalVal.textContent = 'Rs. 0';
+                return;
+            }
+
+            cartItemsContainer.innerHTML = '';
+            let subtotal = 0;
+
+            cart.forEach((item, index) => {
+                // Parse clean numbers out of currency strings for standard adding logic
+                const explicitPrice = parseInt(item.price.replace(/[^0-9]/g, ''));
+                subtotal += explicitPrice;
+                
+                const itemMarkup = `
+                    <div class="cart-item">
+                        <img src="${item.imgSrc}" class="cart-item-img" alt="${item.title}">
+                        <div class="cart-item-info">
+                            <h4 class="cart-item-title">${item.title}</h4>
+                            <span class="cart-item-price">${item.price}</span>
+                        </div>
+                        <button style="background:none; border:none; color: #999; cursor:pointer; font-size:1.1rem" onclick="removeItem(${index})">&times;</button>
+                    </div>
+                `;
+                cartItemsContainer.insertAdjacentHTML('beforeend', itemMarkup);
+            });
+
+            cartSubtotalVal.textContent = `Rs. ${subtotal.toLocaleString()}`;
+        }
+
+        // Add to Cart Button Hooks
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const card = e.target.closest('.product-card');
+                const title = card.querySelector('.product-title').textContent;
+                const price = card.querySelector('.sale-price').textContent;
+                const imgSrc = card.querySelector('.product-image').getAttribute('src');
+
+                cart.push({ title, price, imgSrc });
+                updateCartUI();
+                
+                if(!cartDrawer.classList.contains('active')) {
+                    toggleCart();
+                }
+            });
+        });
+
+        window.removeItem = function(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        };
+    </script>
+</body>
+</html>
